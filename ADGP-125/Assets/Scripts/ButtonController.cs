@@ -182,7 +182,7 @@ public class ButtonController : MonoBehaviour {
 
     public void save_button_Click()
     {
-        string path = @"C:\Users\Guy.Goudeau\Desktop\New Unity Projects\ADGP-125\Assets\Saves\";
+        string path = Environment.CurrentDirectory + @"\Saves\";
         Utilities.SerializeXML<SaveGameData>("Stats", SuperSave, path);
         combatlog.text += ("Game has been saved.\n");
     }
@@ -191,7 +191,7 @@ public class ButtonController : MonoBehaviour {
     {
         combatlog.text = "";
         combatlog.text += ("Game has been loaded.\n");
-        string path = @"C:\Users\Guy.Goudeau\Desktop\New Unity Projects\ADGP-125\Assets\Saves\Stats";
+        string path = Environment.CurrentDirectory + @"\Saves\Stats";
         Utilities.DeserializeXML<SaveGameData>(path);
         SaveGameData save = Utilities.DeserializeXML<SaveGameData>(path);
         player.health = save.SaveHealth;
